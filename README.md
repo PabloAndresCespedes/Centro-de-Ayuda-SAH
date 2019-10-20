@@ -7,7 +7,7 @@
 * Creación de los Tablespace correspondientes a la aplicación: https://docs.oracle.com/cd/B19306_01/server.102/b14220/physical.htm (link Oficial)
 * Exportación de las tablas que están en la carpeta tablas
 * Exportación de la aplicación en formato SQL.
-* Ejecutar los scripts de los triggers, procesos y funciones dentro del entorno local, las carpetas estarán divididas con sus correspondientes nombres.
+* Ejecutar los scripts de los triggers, procesos y funciones dentro del entorno local, las carpetas estarán divididas con sus correspondientes nombres. (ya no es necesario si se ejecuta el script de base de datos)
 
 <b>Observaciones:</b><br>
 * Las secuencias deben ser creadas por el usuario https://www.tutorialesprogramacionya.com/oracleya/temarios/descripcion.php?inicio=25&cod=193&punto=35 (Forma manual, cabe recalcar que la mayoría de los entornos de desarrollo traen ya la función de crearlas con un entorno gráfico). Los nombres de las secuencias se establecerán dentro de la carpeta Secuencias.
