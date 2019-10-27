@@ -27,7 +27,7 @@ prompt APPLICATION 162 - Centro de Ayuda Cliente
 -- Application Export:
 --   Application:     162
 --   Name:            Centro de Ayuda Cliente
---   Date and Time:   20:19 Tuesday October 22, 2019
+--   Date and Time:   07:59 Sunday October 27, 2019
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -120,7 +120,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Centro de Ayuda '
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20191022190204'
+,p_last_upd_yyyymmddhh24miss=>'20191023200004'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_ui_type_name => null
@@ -185,6 +185,15 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'#'
 ,p_list_item_icon=>'fa-user'
 ,p_list_text_02=>'has-username'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2056271853591803)
+,p_list_item_display_sequence=>30
+,p_list_item_link_text=>unistr('Cerrar Sesi\00F3n')
+,p_list_item_link_target=>'&LOGOUT_URL.'
+,p_list_item_icon=>'fa-arrow-left'
+,p_parent_list_item_id=>wwv_flow_api.id(71011600330989381)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 end;
@@ -1588,7 +1597,7 @@ wwv_flow_api.create_list_of_values(
 wwv_flow_api.create_static_lov_data(
  p_id=>wwv_flow_api.id(71005628109989359)
 ,p_lov_disp_sequence=>10
-,p_lov_disp_value=>'Remember username'
+,p_lov_disp_value=>'Recordar Usuario'
 ,p_lov_return_value=>'Y'
 );
 end;
@@ -24987,8 +24996,8 @@ wwv_flow_api.create_page(
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_api.id(71033711913112484)
-,p_last_updated_by=>'PABLOCESPEDES'
-,p_last_upd_yyyymmddhh24miss=>'20190723152212'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20191023200004'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(70005244524532056)
@@ -25046,8 +25055,9 @@ unistr('        END) AS "SATISFACC\00D3N",'),
 'INNER JOIN ca_tipo_incidencia t ON (t.id_tipo_inc = a.tipo_inci_id)',
 'INNER JOIN ca_prioridad pr ON (pr.id_prioridad = a.prioridad_id)',
 'LEFT  JOIN ca_satisfaccion st ON (st.id_satisfaccion = a.satisfaccion_id)',
-'WHERE m.app_id      = :APLICACION',
-'  AND (a.cliente_id = :P1_MIS_TICKETS OR :P1_MIS_TICKETS IS NULL)'))
+'WHERE /*m.app_id      = :APLICACION',
+'  AND */(a.cliente_id = :P1_MIS_TICKETS OR :P1_MIS_TICKETS IS NULL)',
+'ORDER BY a.id_incidencia desc  '))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_prn_content_disposition=>'ATTACHMENT'
@@ -27245,7 +27255,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_api.id(71033711913112484)
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20191020184049'
+,p_last_upd_yyyymmddhh24miss=>'20191023195744'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(72463704867383955)
@@ -27255,7 +27265,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_template=>wwv_flow_api.id(70892632752989190)
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
-,p_plug_grid_column_span=>6
+,p_plug_grid_column_span=>7
 ,p_plug_display_point=>'BODY'
 ,p_plug_source=>unistr('<p style="font-size:20px;">&nbsp Elija a qui\00E9n solicitar\00E1 ayuda para su incidencia.</p>')
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -27476,7 +27486,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_api.id(71033711913112484)
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20191022183152'
+,p_last_upd_yyyymmddhh24miss=>'20191023194455'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(72463892595383956)
@@ -27497,7 +27507,7 @@ wwv_flow_api.create_page_plug(
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(72463919803383957)
 ,p_plug_name=>'LISTA_GRUPOS'
-,p_region_template_options=>'#DEFAULT#:t-Form--slimPadding:t-Form--large:t-Form--leftLabels:margin-left-sm:margin-right-md'
+,p_region_template_options=>'#DEFAULT#:t-Form--large:t-Form--leftLabels:margin-left-sm'
 ,p_plug_template=>wwv_flow_api.id(70896314628989196)
 ,p_plug_display_sequence=>20
 ,p_plug_display_point=>'REGION_POSITION_02'
@@ -27537,6 +27547,7 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_06=>'DESCRIPCION'
 ,p_attribute_16=>'f?p=&APP_ID.:7:&SESSION.::&DEBUG.:RP,7:P7_CATEGORIA_ID,P7_TIPO_INCI_ID,CATEGORIA:&ID_CATEGORIA.,&TIPO_INCI_ID.,&"NOMBRE CATEGORIA".'
 ,p_attribute_18=>'CLIENT'
+,p_attribute_20=>unistr('Busque una Categor\00EDa')
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(73035501740923333)
@@ -27571,8 +27582,8 @@ wwv_flow_api.create_page_item(
 '       g.id_grupo_cat r',
 'FROM ca_grupo_categoria g',
 'WHERE g.proyecto_id = :P6_ID_PROYECTO;'))
-,p_field_template=>wwv_flow_api.id(70976408511989291)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--radioButtonGroup'
+,p_field_template=>wwv_flow_api.id(70976276474989291)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--radioButtonGroup'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'
 ,p_escape_on_http_output=>'N'
@@ -27637,7 +27648,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_api.id(71033711913112484)
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20191021201104'
+,p_last_upd_yyyymmddhh24miss=>'20191023195518'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(73127745531230224)
@@ -27672,17 +27683,20 @@ wwv_flow_api.create_page_plug(
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(73130066148230247)
 ,p_plug_name=>'ADJUNTOS'
+,p_region_name=>'reg_adj'
 ,p_parent_plug_id=>wwv_flow_api.id(73127745531230224)
 ,p_region_template_options=>'#DEFAULT#:margin-top-sm'
 ,p_plug_template=>wwv_flow_api.id(70896314628989196)
 ,p_plug_display_sequence=>20
+,p_plug_grid_column_span=>12
+,p_plug_display_column=>1
 ,p_plug_display_point=>'BODY'
 ,p_plug_source_type=>'PLUGIN_DE.DANIELH.DROPZONE2'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'COLLECTION'
 ,p_attribute_02=>'DROPZONE_UPLOAD'
 ,p_attribute_07=>'STYLE2'
-,p_attribute_08=>'580px'
+,p_attribute_08=>'100%'
 ,p_attribute_09=>'180px'
 ,p_attribute_10=>'15'
 ,p_attribute_11=>'4'
@@ -28271,7 +28285,7 @@ unistr('-- es necesario que el coordinador cree un flujo de trabajo para la asig
 '    BEGIN',
 '        SELECT m.module_id INTO V_APP_ID ',
 '        FROM apex_access_modules m',
-'        WHERE m.app_id = :APLICACION;',
+'        WHERE m.app_id = 100;--:APLICACION;',
 '',
 '        IF V_APP_ID IS NOT NULL THEN',
 '            :P7_APLICACION_ID  := V_APP_ID;',
@@ -30155,15 +30169,15 @@ wwv_flow_api.create_page(
 ,p_user_interface_id=>wwv_flow_api.id(71000165010989323)
 ,p_name=>'Login Page'
 ,p_alias=>'LOGIN_DESKTOP'
-,p_step_title=>'Centro de Ayuda Cliente - Sign In'
+,p_step_title=>'Centro de Ayuda Cliente - Ingresar'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>wwv_flow_api.id(70877980494989169)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_page_is_public_y_n=>'Y'
-,p_last_updated_by=>'PABLOCESPEDES'
-,p_last_upd_yyyymmddhh24miss=>'20190717094040'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20191023193859'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(71004133090989356)
@@ -30197,15 +30211,12 @@ wwv_flow_api.create_page_button(
 ,p_button_plug_id=>wwv_flow_api.id(71004133090989356)
 ,p_button_name=>'LOGIN'
 ,p_button_action=>'SUBMIT'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_api.id(70977626380989293)
+,p_button_template_options=>'#DEFAULT#:t-Button--iconRight'
+,p_button_template_id=>wwv_flow_api.id(70977725153989293)
 ,p_button_is_hot=>'Y'
-,p_button_image_alt=>'Sign In'
+,p_button_image_alt=>'Ingresar'
 ,p_button_position=>'REGION_TEMPLATE_NEXT'
-,p_button_alignment=>'LEFT'
-,p_grid_new_grid=>false
-,p_grid_new_row=>'Y'
-,p_grid_new_column=>'Y'
+,p_icon_css_classes=>'fa-arrow-right'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(71004559886989357)
@@ -30213,18 +30224,16 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_api.id(71004133090989356)
 ,p_prompt=>'username'
-,p_placeholder=>'username'
+,p_placeholder=>'Usuario'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>40
 ,p_cMaxlength=>100
-,p_label_alignment=>'RIGHT'
 ,p_field_template=>wwv_flow_api.id(70976276474989291)
 ,p_item_icon_css_classes=>'fa-user'
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_03=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'NONE'
 );
@@ -30234,11 +30243,10 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_api.id(71004133090989356)
 ,p_prompt=>'password'
-,p_placeholder=>'password'
+,p_placeholder=>unistr('Contrase\00F1a')
 ,p_display_as=>'NATIVE_PASSWORD'
 ,p_cSize=>40
 ,p_cMaxlength=>100
-,p_label_alignment=>'RIGHT'
 ,p_field_template=>wwv_flow_api.id(70976276474989291)
 ,p_item_icon_css_classes=>'fa-key'
 ,p_item_template_options=>'#DEFAULT#'
@@ -30250,26 +30258,22 @@ wwv_flow_api.create_page_item(
 ,p_name=>'P9999_REMEMBER'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_api.id(71004133090989356)
-,p_prompt=>'Remember username'
+,p_prompt=>'Recordar usuario'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_named_lov=>'LOGIN_REMEMBER_USERNAME'
 ,p_lov=>'.'||wwv_flow_api.id(71005264642989359)||'.'
-,p_label_alignment=>'RIGHT'
 ,p_field_template=>wwv_flow_api.id(70976276474989291)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_lov_display_extra=>'NO'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p>',
-'If you select this checkbox, the application will save your username in a persistent browser cookie named "LOGIN_USERNAME_COOKIE".',
-'When you go to the login page the next time,',
-'the username field will be automatically populated with this value.',
+unistr('    Con \00E9ste campo seleccionado se recuerda el \00FAltimo usuario que ingres\00F3 al sistema.'),
 '</p>',
-'<p>',
-'If you deselect this checkbox and your username is already saved in the cookie,',
-'the application will overwrite it with an empty value.',
-'You can also use your browser''s developer tools to completely remove the cookie.',
-'</p>'))
+'',
+'',
+'',
+''))
 ,p_attribute_01=>'1'
 );
 wwv_flow_api.create_page_process(
