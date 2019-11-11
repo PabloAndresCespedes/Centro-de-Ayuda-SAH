@@ -12,3 +12,7 @@
 - USUARIOS_DATA (1G).
 * Exportación de la Base de Datos (Donde se encuentran las funciones, secuencias y procedimientos requeridos por la aplicación).
 * Exportación de la aplicación en formato SQL.
+* Para el uso de los reportes: Instalar JasperServer Community, y para el diseño de los reportes JasperStudio.
+* Subir al servidor los archivos de la Carpeta Jasper, para que los recursos se realicen.
+* Conectar a la base de datos de Oracle 18c XE, desde el JasperStudio, mediante el OJDBC compatible, en este caso la versión 8.
+* Usar el conector también en el servidor para que la fuente de datos también pueda ser actualizada desde el Jasper Studio.
